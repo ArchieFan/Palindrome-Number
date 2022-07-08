@@ -27,13 +27,37 @@ public class Solution
         return arr1.SequenceEqual(arr2);    // cannot use "==" 
     }
 
-        static void Main()
+    public bool IsPalindrome3(int x)
+    {
+        if (x < 0) return false;    // all negetive value will not Palindrome
+
+        int div = 1;
+        while (x >= 10 * div)
+        {
+            div *= 10;
+        }
+        while (x != 0)
+        {
+            int right = x % 10;
+            int left = x / div;
+            if (right != left) return false;
+            x = (x % div) / 10;
+            div = div / 100;
+        }
+
+        return true;
+    }
+
+
+    static void Main()
     {
         int x = 121;
         Solution s = new Solution();
         Console.WriteLine(s.IsPalindrome(x));
 
         Console.WriteLine(s.IsPalindrome2(x));
+
+        Console.WriteLine(s.IsPalindrome3(x));
     }
 }
 
