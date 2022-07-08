@@ -31,17 +31,17 @@ public class Solution
     {
         if (x < 0) return false;    // all negetive value will not Palindrome
 
-        int div = 1;
+        long div = 1;
         while (x >= 10 * div)
         {
             div *= 10;
         }
         while (x != 0)
         {
-            int right = x % 10;
-            int left = x / div;
+            long right = x % 10;
+            long left = x / div;
             if (right != left) return false;
-            x = (x % div) / 10;
+            x = (int)((x % div) / 10);
             div = div / 100;
         }
 
@@ -51,7 +51,7 @@ public class Solution
 
     static void Main()
     {
-        int x = 121;
+        int x = 1410110141;
         Solution s = new Solution();
         Console.WriteLine(s.IsPalindrome(x));
 
